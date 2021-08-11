@@ -25,7 +25,7 @@ const addbtnsettings = document.querySelector(".radioaddSettings");
 const settingUpdate = document.querySelector(".updateSettings");
 const settingCalltotalElem = document.querySelector(".callTotalSettings");
 const settingSmstotallElem = document.querySelector(".smsTotalSettings");
-const settingTotalElem = document.querySelector(".totalSettings");
+const settingTotalElem = document.querySelector(".final");
 const costperCallelem = document.querySelector(".callCostSetting");
 const costperSmselem = document.querySelector(".smsCostSetting");
 const warningValueelem = document.querySelector(".warningLevelSetting");
@@ -73,16 +73,17 @@ function settingsBill() {
 
     const checkedRadioBtnSettings = document.querySelector(".billItemTypeWithSettings:checked");
     var inputItem = checkedRadioBtnSettings.value;
-    if (inputItem == "call" || inputItem == "Call" || inputItem == "CALL") {
+    if (inputItem == "call") {
         settingCalltotal += callCost;
     }
-    else if (inputItem == "sms" || inputItem == "Sms" || inputItem == "SMS") {
+    else if (inputItem == "sms") {
         settingSmstotal += smsCost;
     }
     settingCalltotalElem.innerHTML = settingCalltotal.toFixed(2);
     settingSmstotallElem.innerHTML = settingSmstotal.toFixed(2);
     var settingTotal = settingCalltotal + settingSmstotal;
-    settingTotalElem.innerHTML = settingTotal.toFixed(2)
+    var number=settingTotal.toFixed(2);
+    settingTotalElem.innerHTML ="R"+number;
 
     if (settingTotal >= warningLevel && settingTotal < dangerLevel) {
         settingTotalElem.classList.add("warning");

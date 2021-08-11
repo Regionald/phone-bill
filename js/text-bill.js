@@ -11,37 +11,39 @@
 // * add nothing for invalid values that is not 'call' or 'sms'.
 // * display the latest total on the screen
 
-const textTotalAddBtn=document.querySelector(".addToBillBtn");
-const billTypeText=document.querySelector(".billTypeText");
-const callsTotalElem=document.querySelector(".callTotalOne");
-const smsTotalElem=document.querySelector(".smsTotalOne");
-const totalCostElem=document.querySelector(".totalOne");
+const textTotalAddBtn = document.querySelector(".addToBillBtn");
+const billTypeText = document.querySelector(".billTypeText");
+const callsTotalElem = document.querySelector(".callTotalOne");
+const smsTotalElem = document.querySelector(".smsTotalOne");
+const totalCostElem = document.querySelector(".red");
 var callsTotal = 0;
 var smsTotal = 0;
 
 function textBillTotal() {
-    newStyle.classList.remove("warning");
-    newStyle.classList.remove("danger");
+    totalCostElem.classList.remove("warning");
+    totalCostElem.classList.remove("danger");
 
     var billTypeEntered = billTypeText.value.trim();
-    if(billTypeEntered=="call"||billTypeEntered=="Call"||billTypeEntered=="CALL"){
-        callsTotal +=2.75;
+    if (billTypeEntered == "call" || billTypeEntered == "Call" || billTypeEntered == "CALL") {
+        callsTotal += 2.75;
     }
-    else if (billTypeEntered=="sms"||billTypeEntered=="Sms"||billTypeEntered=="SMS"){
-        smsTotal +=0.75;
+    else if (billTypeEntered == "sms" || billTypeEntered == "Sms" || billTypeEntered == "SMS") {
+        smsTotal += 0.75;
     }
 
     callsTotalElem.innerHTML = callsTotal.toFixed(2);
     smsTotalElem.innerHTML = smsTotal.toFixed(2);
     var totalCost = callsTotal + smsTotal;
-    totalCostElem.innerHTML = totalCost.toFixed(2)
+    var number=totalCost.toFixed(2);
+    totalCostElem.innerHTML = "R"+number;
+     
 
-    if (totalCost >= 30 && totalCost<50) {
+    if (totalCost >= 30 && totalCost < 50) {
         totalCostElem.classList.add("warning");
     }
     else if (totalCost >= 50) {
         totalCostElem.classList.add("danger");
     }
-    
+
 };
 textTotalAddBtn.addEventListener('click', textBillTotal);
