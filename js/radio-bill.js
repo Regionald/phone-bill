@@ -32,15 +32,16 @@ function radioBillTotal() {
     rsmsTotalElem.innerHTML = radioSmstotal.toFixed(2);
     var radiototalCost = radioCallstotal + radioSmstotal;
     var number = radiototalCost.toFixed(2);
-    rtotalCostElem.innerHTML = "R" + number;
+    
 
     if (radiototalCost >= 30 && radiototalCost < 50) {
         rtotalCostElem.classList.add("warning");
     }
     else if (radiototalCost >= 50) {
         rtotalCostElem.classList.add("danger");
+        number=50;
     }
-
+    rtotalCostElem.innerHTML = "R" + number;
 }
 
 radioTotalAddBtn.addEventListener('click', radioBillTotal);

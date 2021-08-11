@@ -83,13 +83,15 @@ function settingsBill() {
     settingSmstotallElem.innerHTML = settingSmstotal.toFixed(2);
     var settingTotal = settingCalltotal + settingSmstotal;
     var number=settingTotal.toFixed(2);
-    settingTotalElem.innerHTML ="R"+number;
+    
 
     if (settingTotal >= warningLevel && settingTotal < dangerLevel) {
         settingTotalElem.classList.add("warning");
     }
     else if (settingTotal >= dangerLevel) {
         settingTotalElem.classList.add("danger");
+        number=dangerLevel;
     }
+    settingTotalElem.innerHTML ="R"+number;
 }
 addbtnsettings.addEventListener('click', settingsBill);

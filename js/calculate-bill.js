@@ -33,13 +33,17 @@ function calculateBtnClicked() {
             billTotal += 0.75;
         }
     }
-    newStyle.innerHTML = "R"+billTotal;
+    
+
     if (billTotal >= 20 && billTotal<30) {
         newStyle.classList.add("warning");
     }
     else if (billTotal >= 30) {
         newStyle.classList.add("danger");
+        billTotal=30;
     }
+    newStyle.innerHTML = "R"+billTotal.toFixed(2);
+    
 
 }
 
