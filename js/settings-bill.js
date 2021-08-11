@@ -27,42 +27,42 @@ const settingCalltotalElem = document.querySelector(".callTotalSettings");
 const settingSmstotallElem = document.querySelector(".smsTotalSettings");
 const settingTotalElem = document.querySelector(".totalSettings");
 const costperCallelem = document.querySelector(".callCostSetting");
-const costperSmselem=document.querySelector(".smsCostSetting");
-const warningValueelem=document.querySelector(".warningLevelSetting");
-const dangerValueelem=document.querySelector(".criticalLevelSetting");
+const costperSmselem = document.querySelector(".smsCostSetting");
+const warningValueelem = document.querySelector(".warningLevelSetting");
+const dangerValueelem = document.querySelector(".criticalLevelSetting");
 
 var settingCalltotal = 0;
 var settingSmstotal = 0;
-var callCost = 2.55;
-var smsCost = 0.65;
-var warningLevel=30;
-var dangerLevel=65;
+var callCost = 0;
+var smsCost = 0;
+var warningLevel = 0;
+var dangerLevel = 0;
 /////////////////function.upadateCost////////////////
 function costUpdate() {
-    
+
 
     settingTotalElem.classList.remove("danger");
     settingTotalElem.classList.remove("warning");
-    var costperCall= parseFloat(costperCallelem.value);
-    if (costperCall != 2.25) {
+    var costperCall = parseFloat(costperCallelem.value);
+    if (costperCall != 0) {
         callCost = costperCall;
         settingCalltotal = 0;
     }
-    var costperSms= parseFloat(costperSmselem.value);
-    if (costperSms!=0.65){
-        smsCost=costperSms;
-       settingSmstotal = 0;
+    var costperSms = parseFloat(costperSmselem.value);
+    if (costperSms != 0) {
+        smsCost = costperSms;
+        settingSmstotal = 0;
     }
 
-    var warningValue= parseFloat(warningValueelem.value);
-    if (warningValue != callCost-smsCost) {
+    var warningValue = parseFloat(warningValueelem.value);
+    if (warningValue != callCost - smsCost) {
         warningLevel = warningValue;
     }
-    var dangerValue= parseFloat(dangerValueelem.value);
-    if (dangerValue != callCost-smsCost) {
-        dangerLevel=dangerValue;
+    var dangerValue = parseFloat(dangerValueelem.value);
+    if (dangerValue != callCost - smsCost) {
+        dangerLevel = dangerValue;
     }
-    
+
 }
 
 
@@ -73,10 +73,10 @@ function settingsBill() {
 
     const checkedRadioBtnSettings = document.querySelector(".billItemTypeWithSettings:checked");
     var inputItem = checkedRadioBtnSettings.value;
-    if (inputItem == "call") {
+    if (inputItem == "call" || inputItem == "Call" || inputItem == "CALL") {
         settingCalltotal += callCost;
     }
-    else if (inputItem == "sms") {
+    else if (inputItem == "sms" || inputItem == "Sms" || inputItem == "SMS") {
         settingSmstotal += smsCost;
     }
     settingCalltotalElem.innerHTML = settingCalltotal.toFixed(2);

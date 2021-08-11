@@ -24,10 +24,10 @@ function textBillTotal() {
     newStyle.classList.remove("danger");
 
     var billTypeEntered = billTypeText.value.trim();
-    if(billTypeEntered=="call"){
+    if(billTypeEntered=="call"||billTypeEntered=="Call"||billTypeEntered=="CALL"){
         callsTotal +=2.75;
     }
-    else if (billTypeEntered=="sms"){
+    else if (billTypeEntered=="sms"||billTypeEntered=="Sms"||billTypeEntered=="SMS"){
         smsTotal +=0.75;
     }
 
