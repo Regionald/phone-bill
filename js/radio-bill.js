@@ -28,19 +28,29 @@ function radioBillTotal() {
         radioSmstotal += 0.75;
     }
 
-    rcallsTotalElem.innerHTML = radioCallstotal.toFixed(2);
-    rsmsTotalElem.innerHTML = radioSmstotal.toFixed(2);
+
     var radiototalCost = radioCallstotal + radioSmstotal;
     var number = radiototalCost.toFixed(2);
-    
+
 
     if (radiototalCost >= 30 && radiototalCost < 50) {
         rtotalCostElem.classList.add("warning");
     }
     else if (radiototalCost >= 50) {
         rtotalCostElem.classList.add("danger");
-        number=50;
-    }
+        var rdSms=radiototalCost-50;
+        var rdCall=radiototalCost-50;
+        number = 50;
+        if (billItemType == "sms"){
+            radioSmstotal-=rdSms;
+        }
+        else if(billItemType == "call"){
+            radioCallstotal -= rdCall;
+        }
+    };
+    
+    rcallsTotalElem.innerHTML = radioCallstotal.toFixed(2);
+    rsmsTotalElem.innerHTML = radioSmstotal.toFixed(2);
     rtotalCostElem.innerHTML = "R" + number;
 }
 

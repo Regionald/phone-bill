@@ -24,28 +24,40 @@ function textBillTotal() {
     totalCostElem.classList.remove("danger");
 
     var billTypeEntered = billTypeText.value.trim();
+
     if (billTypeEntered == "call" || billTypeEntered == "Call" || billTypeEntered == "CALL") {
         callsTotal += 2.75;
+
     }
     else if (billTypeEntered == "sms" || billTypeEntered == "Sms" || billTypeEntered == "SMS") {
         smsTotal += 0.75;
-    }
+    };
 
-    callsTotalElem.innerHTML = callsTotal.toFixed(2);
-    smsTotalElem.innerHTML = smsTotal.toFixed(2);
     var totalCost = callsTotal + smsTotal;
-    var number=totalCost.toFixed(2);
-    
-     
+    var number = totalCost.toFixed(2);
+
 
     if (totalCost >= 30 && totalCost < 50) {
         totalCostElem.classList.add("warning");
     }
+
     else if (totalCost >= 50) {
         totalCostElem.classList.add("danger");
-        number=50;
+        var Smsdif=totalCost-50;
+        var Calldif=totalCost-50;
+        number = 50;
+        if (billTypeEntered == "sms" || billTypeEntered == "Sms" || billTypeEntered == "SMS") {
+            smsTotal -= Smsdif;
+        }
+        else if (billTypeEntered == "call" || billTypeEntered == "Call" || billTypeEntered == "CALL"){
+                 callsTotal-=Calldif;
+        }
+
+
     }
-    totalCostElem.innerHTML = "R"+number;
+    callsTotalElem.innerHTML = callsTotal.toFixed(2);
+    smsTotalElem.innerHTML = smsTotal.toFixed(2);
+    totalCostElem.innerHTML = "R" + number;
 
 };
 textTotalAddBtn.addEventListener('click', textBillTotal);
